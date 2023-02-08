@@ -1,3 +1,5 @@
+@use "../themes/green" as *;
+
 @mixin set-button-layout() {
   background-color: $primary;
   color: white;
