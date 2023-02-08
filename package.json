@@ -1,0 +1,16 @@
+{
+  "name": "test-sass",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "npx sass --watch src/styles.scss src/styles.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@mozaic-ds/styles": "^1.52.0",
+    "sass": "^1.57.1"
+  }
+}
