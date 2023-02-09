@@ -1,0 +1,11 @@
+@use "sass:map";
+@use "../theme" as *;
+
+$color-button-background: map.get(
+  $tokens,
+  $brand,
+  "color",
+  "button",
+  "solid",
+  "background"
+);

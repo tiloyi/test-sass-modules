@@ -1,1 +1,11 @@
-@forward "./themes/green";
+@use "./themes/green" as g;
+@use "./themes/blue" as b;
+@use "./themes/orange" as o;
+
+$brand: "green" !default;
+
+$tokens: (
+  "green": g.$tokens,
+  "blue": b.$tokens,
+  "orange": o.$tokens,
+);

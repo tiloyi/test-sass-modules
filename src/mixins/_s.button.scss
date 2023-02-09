@@ -1,7 +1,7 @@
-@use "../theme" as *;
+@use "./s.button.variables" as *;
 
 @mixin set-button-layout() {
-  background-color: $primary;
+  background-color: $color-button-background;
   color: white;
   cursor: pointer;
   border-radius: 40px;

@@ -1,1 +1,11 @@
 $primary: cyan;
+
+$tokens: (
+  "color": (
+    "button": (
+      "solid": (
+        "background": $primary,
+      ),
+    ),
+  ),
+);

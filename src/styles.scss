@@ -1,2 +1,7 @@
-// components
+// Config
+@use "./theme" with (
+  $brand: "green"
+);
+
+// Components
 @import "components/button/";
