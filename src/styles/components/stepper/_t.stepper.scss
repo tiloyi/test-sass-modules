@@ -1,5 +1,5 @@
-@use "s.magic-unit" as *;
-@use "s.radius" as *;
+@use "../../settings-tools/s.magic-unit" as *;
+@use "../../settings-tools/s.radius" as *;
 
 @mixin set-compact-variation($parent) {
   #{$parent} {

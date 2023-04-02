@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "s.fonts-scale" as *;
+@use "../../settings-tools/s.fonts-scale" as *;
 
 @mixin set-select-size($sizeProps) {
   $background-position-1: map.get($sizeProps, "background-position-1");

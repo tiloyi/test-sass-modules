@@ -1,7 +1,7 @@
 @use "sass:map";
-@use "s.fonts-scale" as *;
-@use "s.magic-unit" as *;
-@use "t.map-tools" as *;
+@use "../../settings-tools/s.fonts-scale" as *;
+@use "../../settings-tools/s.magic-unit" as *;
+@use "../../settings-tools/t.map-tools" as *;
 
 @mixin set-flag-base($parent) {
   display: inline-block;

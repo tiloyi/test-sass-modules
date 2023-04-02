@@ -1,7 +1,7 @@
 @use "sass:map";
 
 // @use settings
-@use "settings-tools" as *;
+@use "../../settings-tools" as *;
 
 // @use component files
 @use "s.progressbar" as *;

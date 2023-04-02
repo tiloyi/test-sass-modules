@@ -1,6 +1,6 @@
 @use "s.checkbox" as *;
-@use "s.magic-unit" as *;
-@use "t.inline-icons" as *;
+@use "../../settings-tools/s.magic-unit" as *;
+@use "../../settings-tools/t.inline-icons" as *;
 
 @mixin set-checkbox-input() {
   min-width: $checkbox-min-width;

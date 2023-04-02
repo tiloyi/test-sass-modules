@@ -1,6 +1,6 @@
 @use "sass:map";
-@use "s.fonts-scale" as *;
-@use "t.inline-icons" as *;
+@use "../../settings-tools/s.fonts-scale" as *;
+@use "../../settings-tools/t.inline-icons" as *;
 
 @mixin set-stars-size($sizeProps) {
   $height: map.get($sizeProps, "height");

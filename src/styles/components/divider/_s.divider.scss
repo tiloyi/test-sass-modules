@@ -1,6 +1,6 @@
-@use "s.border" as *;
-@use "s.magic-unit" as *;
-@use "t.map-tools" as *;
+@use "../../settings-tools/s.border" as *;
+@use "../../settings-tools/s.magic-unit" as *;
+@use "../../settings-tools/t.map-tools" as *;
 
 $dividers: get-token(color, divider);
 $divider-positions: "top", "right", "bottom", "left";

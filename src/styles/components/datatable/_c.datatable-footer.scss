@@ -1,3 +1,6 @@
+// @use settings
+@use "../../settings-tools" as *;
+
 .mc-datatable {
   $parent: get-parent-selector(&);
 

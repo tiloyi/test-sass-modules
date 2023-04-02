@@ -1,10 +1,10 @@
 @use "sass:math";
 
 // @use settings
-@use "settings-tools" as *;
+@use "../../settings-tools" as *;
 
 // @use component files
-@use "../divider/_t.divider.scss" as *;
+@use "../divider/t.divider" as *;
 
 /* mqp:start */
 .mc-tabs {

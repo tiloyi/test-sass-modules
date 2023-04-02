@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "t.map-tools" as *;
+@use "../../settings-tools/t.map-tools" as *;
 
 $links-tokens: get-token(color, link);
 $link-sizes: (

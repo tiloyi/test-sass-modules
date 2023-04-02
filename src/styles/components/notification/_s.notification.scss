@@ -1,8 +1,8 @@
 @use "sass:map";
-@use "s.border" as *;
-@use "s.magic-unit" as *;
-@use "t.inline-icons" as *;
-@use "t.map-tools" as *;
+@use "../../settings-tools/s.border" as *;
+@use "../../settings-tools/s.magic-unit" as *;
+@use "../../settings-tools/t.inline-icons" as *;
+@use "../../settings-tools/t.map-tools" as *;
 
 $notification-selector: ".mc-notification";
 $notification-close-icon-color: get-token(color, notification, font);

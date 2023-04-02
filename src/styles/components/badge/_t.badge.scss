@@ -1,8 +1,8 @@
 @use "sass:map";
 @use "sass:math";
 @use "s.badge" as *;
-@use "s.magic-unit" as *;
-@use "s.radius" as *;
+@use "../../settings-tools/s.magic-unit" as *;
+@use "../../settings-tools/s.radius" as *;
 
 @mixin set-badge-base() {
   @include set-border-radius();

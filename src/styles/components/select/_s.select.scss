@@ -1,8 +1,8 @@
 @use "sass:map";
-@use "s.border" as *;
-@use "s.magic-unit" as *;
-@use "s.radius" as *;
-@use "t.inline-icons" as *;
+@use "../../settings-tools/s.border" as *;
+@use "../../settings-tools/s.magic-unit" as *;
+@use "../../settings-tools/s.radius" as *;
+@use "../../settings-tools/t.inline-icons" as *;
 
 $select-border-width: get-border("s");
 $select-sizes: (

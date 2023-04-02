@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "npx sass --watch src/styles.scss src/styles.css"
+    "sass": "npx sass --load-path=node_modules --watch src/styles.scss src/styles.css"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@mozaic-ds/styles": "^1.52.0",
-    "sass": "^1.57.1"
+    "@mozaic-ds/styles": "^1.56.0",
+    "sass": "^1.60.0"
   }
 }

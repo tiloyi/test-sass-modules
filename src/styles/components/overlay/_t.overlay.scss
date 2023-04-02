@@ -1,5 +1,5 @@
-@use "t.colors" as *;
-@use "s.overlay" as *;
+@use "../../settings-tools/t.colors" as *;
+@use "../../settings-tools/s.overlay" as *;
 
 /// The mixin set-page-overlay() defines the styles
 /// of an overlay element that apply to all the space on a page

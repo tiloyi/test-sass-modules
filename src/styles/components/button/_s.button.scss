@@ -1,6 +1,9 @@
 @use "sass:map";
 @use "sass:math";
-@use "../../settings-tools/" as *;
+@use "../../settings-tools/s.border" as *;
+@use "../../settings-tools/s.magic-unit" as *;
+@use "../../settings-tools/s.radius" as *;
+@use "../../settings-tools/t.map-tools" as *;
 
 $buttons: get-token(color, button);
 $button-sizes: (

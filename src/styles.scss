@@ -1,8 +1,14 @@
 // user theme
-@import "themes/green";
+// @import "themes/green";
 
 // settings
-@import "mixins";
+// @import "mixins";
 
 // components
-@import "./components/button/";
+// @import "./components/button/";
+
+@use "./styles/components/" as *;
+
+button {
+  background-color: $color-secondary-blue-600;
+}

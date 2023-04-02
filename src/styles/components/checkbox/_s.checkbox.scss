@@ -1,6 +1,6 @@
-@use "s.border" as *;
-@use "s.magic-unit" as *;
-@use "s.radius" as *;
+@use "../../settings-tools/s.border" as *;
+@use "../../settings-tools/s.magic-unit" as *;
+@use "../../settings-tools/s.radius" as *;
 
 $checkbox-min-width: 20px;
 $checkbox-min-height: 20px;

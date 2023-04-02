@@ -1,8 +1,8 @@
 @use "sass:map";
-@use "s.border" as *;
-@use "s.magic-unit" as *;
-@use "s.radius" as *;
-@use "t.map-tools" as *;
+@use "../../settings-tools/s.border" as *;
+@use "../../settings-tools/s.magic-unit" as *;
+@use "../../settings-tools/s.radius" as *;
+@use "../../settings-tools/t.map-tools" as *;
 
 $stars: get-token(color, star);
 $stars-sizes: (

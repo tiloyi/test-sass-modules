@@ -2,8 +2,8 @@
 @use "sass:string";
 
 // @use settings
-@use "s.border" as *;
-@use "t.map-tools" as *;
+@use "../../settings-tools/s.border" as *;
+@use "../../settings-tools/t.map-tools" as *;
 
 // @use settings of the component
 @use "s.divider" as *;

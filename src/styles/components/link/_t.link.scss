@@ -1,11 +1,11 @@
 @use "sass:map";
 
 // @use settings
-@use "s.focus" as *;
-@use "s.fonts-scale" as *;
-@use "s.magic-unit" as *;
-@use "s.screens" as *;
-@use "s.spaces" as *;
+@use "../../settings-tools/s.focus" as *;
+@use "../../settings-tools/s.fonts-scale" as *;
+@use "../../settings-tools/s.magic-unit" as *;
+@use "../../settings-tools/s.screens" as *;
+@use "../../settings-tools/s.spaces" as *;
 
 // @use component - settings
 @use "s.link" as *;

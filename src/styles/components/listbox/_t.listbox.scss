@@ -1,6 +1,6 @@
 // @use settings
-@use "s.magic-unit" as *;
-@use "t.inline-icons" as *;
+@use "../../settings-tools/s.magic-unit" as *;
+@use "../../settings-tools/t.inline-icons" as *;
 
 // @use component - settings
 @use "s.listbox" as *;

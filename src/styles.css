@@ -1,16 +1,20 @@
-.my-button {
-  background-color: green;
-  color: white;
-  cursor: pointer;
-  border-radius: 40px;
-  text-align: center;
-  border: 1px solid transparent;
-  transition: all ease 200ms;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: middle;
-  height: 40px;
-}
+/* Error: There is no module with the namespace "map".
+ *    ,
+ * 23 | $accordion-size-default: map.get($accordion-sizes, "m");
+ *    |                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *    '
+ *   src/styles/components/accordion/_s.accordion.scss 23:26  @forward
+ *   src/styles/components/accordion/_index.scss 1:1          @forward
+ *   src/styles/components/_index.scss 1:1                    @use
+ *   src/styles.scss 10:1                                     root stylesheet */
 
-/*# sourceMappingURL=styles.css.map */
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: There is no module with the namespace "map".\a    \2577 \a 23 \2502  $accordion-size-default: map.get($accordion-sizes, "m");\a    \2502                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   src/styles/components/accordion/_s.accordion.scss 23:26  @forward\a   src/styles/components/accordion/_index.scss 1:1          @forward\a   src/styles/components/_index.scss 1:1                    @use\a   src/styles.scss 10:1                                     root stylesheet';
+}

@@ -1,5 +1,4 @@
 @use "sass:map";
-@use "../../../node_modules/@mozaic-ds/tokens/build/lm/scss/tokens" as *;
 
 @function map-deep-get($map, $keys...) {
   @each $key in $keys {
