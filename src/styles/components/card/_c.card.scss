@@ -1,0 +1,114 @@
+@use "sass:map";
+
+// @use settings
+@use "settings-tools" as *;
+
+.mc-card {
+  $parent: get-parent-selector(&);
+
+  &,
+  * {
+    box-sizing: border-box;
+  }
+
+  @include set-font-family();
+
+  max-width: magic-unit-rem(17.75, "true"); // 284px
+
+  @include set-from-screen("m") {
+    max-width: magic-unit-rem(18.25, "true"); // 292px;
+  }
+
+  @include set-from-screen("l") {
+    max-width: magic-unit-rem(18, "true"); // 288px
+  }
+
+  @include set-from-screen("xl") {
+    max-width: magic-unit-rem(17.5, "true"); // 280px
+  }
+
+  @include set-from-screen("xxl") {
+    max-width: magic-unit-rem(27.25, "true"); // 436px
+  }
+
+  &__visual {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+
+    &::before {
+      @include ratio-before();
+
+      padding-top: map.get($card-visual-ratios, "4x3");
+    }
+
+    @each $ratio, $size in $card-visual-ratios {
+      @if $ratio != "4x3" {
+        &--#{$ratio}::before {
+          padding-top: $size;
+        }
+      }
+    }
+  }
+
+  &__img {
+    height: auto;
+    left: 0;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+  }
+
+  &__content {
+    padding-top: $mu100;
+  }
+
+  &__title,
+  &__subtitle {
+    margin-top: 0;
+    margin-bottom: $mu050;
+  }
+
+  &__title {
+    @include set-font-scale("06", "m");
+    @include set-font-weight("semi-bold");
+
+    color: $color-font-darkest;
+  }
+
+  &__subtitle {
+    @include set-font-scale("04", "m");
+    @include set-font-weight("regular");
+
+    color: $color-font-dark;
+  }
+
+  &__body {
+    @include set-font-scale("05", "m");
+
+    color: $color-font-darker;
+    margin-bottom: $mu100;
+  }
+
+  &--bordered {
+    background: $color-card-bordered-background;
+    border: get-border(m) solid $color-card-bordered-border;
+    border-radius: $mu025;
+    overflow: hidden;
+
+    #{$parent} {
+      &__content {
+        padding: {
+          bottom: $mu150;
+          left: $mu100;
+          right: $mu100;
+        }
+      }
+    }
+  }
+
+  &--fluid {
+    max-width: auto;
+  }
+}

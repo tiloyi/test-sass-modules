@@ -1,0 +1,139 @@
+@use "sass:math";
+
+// @use settings
+@use "settings-tools" as *;
+
+// @use component files
+@use "s.stars" as *;
+@use "t.stars" as *;
+
+/* mqp:start */
+.mc-stars-input {
+  $parent: get-parent-selector(&);
+
+  @include set-stars-container($stars-default-size);
+
+  display: flex;
+  position: relative;
+
+  &__text,
+  &__radio {
+    @include set-hidden-input();
+  }
+
+  &__radio::-ms-check {
+    display: none;
+  }
+
+  &__label {
+    @include set-stars-size($stars-default-size);
+    @include set-focus-transition();
+
+    background-image: url("#{inline-icons('star-full-32', $color-star-full)}");
+    background-position: center center;
+    background-repeat: repeat-x;
+    background-size: $stars-default-bg-size $stars-default-bg-size;
+    border-radius: $stars-focus-radius;
+    cursor: pointer;
+
+    &::before {
+      background-image: url("#{inline-icons('star-full-32', $color-star-full)}");
+      background-position: left center;
+      background-repeat: repeat-x;
+      background-size: $stars-default-bg-size $stars-default-bg-size;
+      content: "";
+      left: 0;
+      top: 0;
+      bottom: 0;
+      display: block;
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @for $i from 5 through 1 {
+      &:nth-of-type(#{$i})::before {
+        width: math.percentage(math.div($i - 1, 5));
+      }
+    }
+  }
+
+  :checked ~ &__label,
+  :focus ~ &__label {
+    background-image: url("#{inline-icons('star-empty-32', $color-star-full)}");
+  }
+
+  :checked + &__label,
+  :focus + &__label {
+    background-image: url("#{inline-icons('star-full-32', $color-star-full)}");
+  }
+
+  :focus + &__label {
+    @include set-shadow-focus();
+  }
+
+  &__radio:hover ~ &__label {
+    background-image: url("#{inline-icons('star-empty-32', $color-star-full)}");
+  }
+
+  &__radio:hover + &__label {
+    background-image: url("#{inline-icons('star-full-32', $color-star-full)}");
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  @each $size, $props in $stars-sizes {
+    &--#{$size} {
+      @if $size != "m" {
+        @include set-stars-container($props);
+
+        $bg-variation-size: map-deep-get(
+          $stars-sizes,
+          $size,
+          "width"
+        ); // fix for ie11
+        $icon-empty: map-deep-get($stars-sizes, $size, "icon-empty");
+        $icon-full: map-deep-get($stars-sizes, $size, "icon-full");
+
+        #{$parent} {
+          &__label {
+            @include set-stars-size($props);
+
+            background-size: $bg-variation-size $bg-variation-size;
+            background-image: url("#{inline-icons($icon-full, $color-star-full)}");
+
+            &::before {
+              background-image: url("#{inline-icons($icon-full, $color-star-full)}");
+              background-size: $bg-variation-size $bg-variation-size;
+            }
+          }
+
+          &__radio {
+            &:checked,
+            &:focus {
+              & ~ #{$parent}__label {
+                background-image: url("#{inline-icons($icon-empty, $color-star-full)}");
+              }
+              & + #{$parent}__label {
+                background-image: url("#{inline-icons($icon-full, $color-star-full)}");
+              }
+            }
+
+            &:hover {
+              & ~ #{$parent}__label {
+                background-image: url("#{inline-icons($icon-empty, $color-star-full)}");
+              }
+
+              & + #{$parent}__label {
+                background-image: url("#{inline-icons($icon-full, $color-star-full)}");
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/* mqp:end */

@@ -1,0 +1,26 @@
+// @use settings
+@use "settings-tools" as *;
+
+.mc-pagination {
+  $parent: get-parent-selector(&);
+
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: $mu100;
+
+  &__select {
+    @include set-font-scale("05", "s");
+
+    padding: magic-unit-rem(0.875, "true") $mu300 magic-unit-rem(0.875, "true")
+      calc(#{$mu075} - #{$select-border-width});
+
+    @include set-from-screen("l") {
+      @include set-font-scale("04", "s");
+
+      padding: calc(#{$mu050} - #{$select-border-width})
+        magic-unit-rem(2.25, true) calc(#{$mu050} - #{$select-border-width})
+        calc(#{$mu050} - #{$select-border-width});
+    }
+  }
+}

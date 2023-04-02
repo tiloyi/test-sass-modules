@@ -1,0 +1,131 @@
+// @use settings
+@use "settings-tools" as *;
+
+// @use component files
+@use "s.checkbox" as *;
+@use "t.checkbox" as *;
+
+/* mqp:start */
+/* stylelint-disable no-descending-specificity */
+.mc-checkbox {
+  $parent: get-parent-selector(&);
+
+  align-items: center;
+  display: flex;
+
+  &__label {
+    @include set-font-scale("05", "s");
+
+    cursor: pointer;
+    margin-left: magic-unit-rem(0.5, true);
+  }
+
+  &__input {
+    @include reset-input();
+
+    min-width: $checkbox-min-width;
+    min-height: $checkbox-min-height;
+    width: $checkbox-width;
+    height: $checkbox-width;
+    border-radius: $checkbox-border-radius;
+    border: $checkbox-border-width solid $color-input-border;
+    background-color: $color-input-background;
+    position: relative;
+    transition: all 200ms ease;
+    cursor: pointer;
+
+    &::-ms-check {
+      background-color: $color-input-background;
+      border: $checkbox-border-width solid $color-input-border;
+      border-radius: $checkbox-border-radius;
+      color: $color-input-checked-icon;
+    }
+
+    &:hover {
+      border-color: $color-input-hover-border;
+
+      &::-ms-check {
+        border-color: $color-input-hover-border;
+      }
+    }
+
+    &:focus {
+      @include set-shadow-focus();
+
+      &::-ms-check {
+        @include set-shadow-focus();
+      }
+    }
+
+    &:checked,
+    &:indeterminate {
+      background-color: $color-input-checked-background;
+      border-color: $color-input-checked-border;
+      background-size: $mu100 $mu100;
+    }
+
+    &:checked {
+      background-image: url("#{inline-icons('checkmark-16', $color-input-checked-icon)}");
+      background-position: center center;
+
+      &::-ms-check {
+        background-color: $color-input-checked-background;
+        border-color: $color-input-checked-border;
+      }
+
+      &:hover:not(:disabled) {
+        border-color: $color-input-checked-hover-border;
+
+        &::-ms-check {
+          border-color: $color-input-checked-hover-border;
+        }
+      }
+    }
+
+    &:indeterminate {
+      background-image: url("#{inline-icons('control-less-16', $color-input-checked-icon)}");
+    }
+
+    &:disabled {
+      background-color: $color-input-disabled-background;
+      border-color: $color-input-disabled-border;
+      cursor: not-allowed;
+
+      &::-ms-check {
+        background-color: $color-input-disabled-background;
+        border-color: $color-input-disabled-border;
+      }
+
+      &:checked {
+        background-image: url("#{inline-icons('checkmark-16', $color-input-disabled-icon)}");
+      }
+
+      &:indeterminate {
+        background-image: url("#{inline-icons('control-less-16', $color-input-disabled-icon)}");
+      }
+
+      & + #{$parent}__label {
+        color: $color-input-disabled-label;
+      }
+    }
+
+    &.is-invalid {
+      border-color: $color-input-invalid-border;
+
+      &::-ms-check {
+        border-color: $color-input-invalid-border;
+      }
+
+      &:hover {
+        border-color: $color-input-invalid-hover-border;
+
+        &::-ms-check {
+          border-color: $color-input-invalid-hover-border;
+        }
+      }
+    }
+  }
+}
+/* stylelint-enable */
+
+/* mqp:end */

@@ -1,0 +1,23 @@
+@use "sass:math";
+@use "sass:string";
+@use "s.magic-unit" as *;
+@use "s.radius" as *;
+
+$progressbar-sizes: (
+  "xs": (
+    "height": math.div($mu025, 2),
+    "border-radius": 1px,
+  ),
+  "s": (
+    "height": $mu025,
+    "border-radius": get-border-radius("s"),
+  ),
+  "m": (
+    "height": $mu050,
+    "border-radius": get-border-radius("m"),
+  ),
+  "percent": (
+    "height": $mu150,
+    "border-radius": string.unquote("12px"),
+  ),
+);

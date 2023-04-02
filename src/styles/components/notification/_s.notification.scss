@@ -1,0 +1,56 @@
+@use "sass:map";
+@use "s.border" as *;
+@use "s.magic-unit" as *;
+@use "t.inline-icons" as *;
+@use "t.map-tools" as *;
+
+$notification-selector: ".mc-notification";
+$notification-close-icon-color: get-token(color, notification, font);
+$notification-border-width: get-border("s");
+$notification-sizes: (
+  "s": (
+    "padding": $mu075 $mu075 $mu150,
+    "icon-size": $mu150,
+    "icon-margin": $mu050,
+    "margin-top": $mu025,
+    "content-padding-top": 0,
+  ),
+  "m": (
+    "padding": $mu100 $mu150 $mu150 $mu100,
+    "icon-size": $mu200,
+    "icon-margin": $mu100,
+    "margin-top": $mu050,
+    "content-padding-top": $mu025,
+  ),
+);
+$notification-default-size: map.get($notification-sizes, "m");
+$notification-types: (
+  "information": (
+    "background": $color-notification-information-background,
+    "border": $color-notification-information-border,
+    "icon": $color-notification-information-icon,
+    "icon-m": "notification-information-32",
+    "icon-s": "notification-information-24",
+  ),
+  "success": (
+    "background": $color-notification-success-background,
+    "border": $color-notification-success-border,
+    "icon": $color-notification-success-icon,
+    "icon-m": "notification-success-32",
+    "icon-s": "notification-success-24",
+  ),
+  "warning": (
+    "background": $color-notification-warning-background,
+    "border": $color-notification-warning-border,
+    "icon": $color-notification-warning-icon,
+    "icon-m": "notification-warning-32",
+    "icon-s": "notification-warning-24",
+  ),
+  "danger": (
+    "background": $color-notification-danger-background,
+    "border": $color-notification-danger-border,
+    "icon": $color-notification-danger-icon,
+    "icon-m": "notification-danger-32",
+    "icon-s": "notification-danger-24",
+  ),
+);

@@ -1,0 +1,156 @@
+@use "sass:math";
+
+// @use settings
+@use "settings-tools" as *;
+
+// @use component files
+@use "s.stepper" as *;
+@use "t.stepper" as *;
+
+.mc-stepper {
+  $parent: get-parent-selector(&);
+
+  width: 100%;
+
+  &__list {
+    display: flex;
+    padding-left: 0;
+    margin: {
+      bottom: 0;
+      top: 0;
+    }
+  }
+
+  &__item,
+  &__link {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    flex: 1;
+    position: relative;
+
+    &::before,
+    &::after {
+      background-color: $color-stepper-item-background;
+      content: "";
+      height: math.div($mu025, 2);
+      position: absolute;
+      top: 11px;
+      width: calc(50% - #{$stepper-divider-gap});
+      z-index: 1;
+    }
+
+    &::before {
+      border-top-right-radius: get-border(s);
+      border-bottom-right-radius: get-border(s);
+      left: 0;
+    }
+
+    &::after {
+      border-top-left-radius: get-border(s);
+      border-bottom-left-radius: get-border(s);
+      right: 0;
+    }
+
+    &:first-child::before,
+    &:last-child::after {
+      content: none;
+    }
+
+    &--current,
+    &--validated {
+      #{$parent} {
+        &__indicator {
+          border-color: $color-stepper-item-current-background;
+        }
+
+        &__detail {
+          @include set-font-weight("semi-bold");
+        }
+      }
+    }
+
+    &--current {
+      &::before {
+        background-color: $color-stepper-item-current-background;
+      }
+
+      #{$parent} {
+        &__indicator {
+          background-color: $color-stepper-item-current-background;
+          color: $color-font-lightest;
+        }
+
+        &__label {
+          color: $color-font-darkest;
+        }
+      }
+    }
+
+    &--validated {
+      &::before,
+      &:not(#{$parent}__item--current)::after {
+        background-color: $color-stepper-item-current-background;
+      }
+    }
+  }
+
+  &__link {
+    height: 100%;
+    text-decoration: none;
+    width: 100%;
+
+    &:hover,
+    &:focus {
+      #{$parent}__label {
+        color: $color-stepper-link-hover-text;
+      }
+    }
+  }
+
+  &__indicator {
+    @include set-font-scale("04", "s");
+    @include set-font-weight("semi-bold");
+
+    align-items: center;
+    background-color: $color-stepper-indicator-background;
+    border: get-border("m") solid $color-stepper-indicator-border;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: flex;
+    flex-shrink: 0;
+    height: $mu150;
+    justify-content: center;
+    margin-bottom: $mu050;
+    position: relative;
+    width: $mu150;
+    z-index: 2;
+  }
+
+  &__icon {
+    max-width: 100%;
+    @include set-font-scale("04", "m");
+
+    color: $color-font-light;
+    text-align: center;
+    width: auto;
+  }
+
+  &__title {
+    display: none;
+    color: $color-stepper-title;
+  }
+
+  &--compact {
+    @include set-compact-variation($parent);
+  }
+
+  &--shrinked {
+    @media screen and (max-width: ($screen-m - 1)) {
+      @include set-compact-variation($parent);
+    }
+  }
+}

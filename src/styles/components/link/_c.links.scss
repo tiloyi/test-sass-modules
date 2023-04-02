@@ -1,0 +1,37 @@
+@use "sass:map";
+
+// @use settings
+@use "settings-tools" as *;
+
+// @use component files
+@use "s.link" as *;
+@use "t.link" as *;
+
+/* mqp:start */
+.mc-link {
+  @include set-link-base();
+  @include set-link-theme(get-token(color, link, "dark"));
+  @include mod-link-sizes();
+  @include set-focus-floating-base();
+  @include set-font-scale(
+    map.get($link-m, "font-size"),
+    map.get($link-m, "line-height")
+  );
+
+  &__icon {
+    display: block;
+    height: $mu100;
+    fill: currentcolor;
+    flex-shrink: 0;
+    width: $mu100;
+  }
+
+  @each $name, $props in $links-tokens {
+    @if $name != "dark" {
+      &--#{$name} {
+        @include set-link-theme($props);
+      }
+    }
+  }
+}
+/* mqp:end */

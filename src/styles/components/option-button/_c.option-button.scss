@@ -1,0 +1,62 @@
+@use "sass:math";
+
+// @use settings
+@use "settings-tools" as *;
+
+.mc-option-button {
+  $parent: get-parent-selector(&);
+
+  display: flex;
+  text-align: center;
+
+  &__input {
+    @include set-hidden-input();
+
+    &:hover + #{$parent}__label {
+      box-shadow: 0 0 0 2px $color-option-button-hover-label-shadow;
+    }
+
+    &:checked + #{$parent}__label {
+      border-color: $color-option-button-checked-label-border;
+      box-shadow: 0 0 0 $mu025 $color-option-button-checked-label-shadow;
+    }
+
+    &:focus + #{$parent}__label {
+      @include set-focus-floating();
+    }
+
+    &:disabled + #{$parent}__label {
+      cursor: not-allowed;
+      background-color: $color-option-button-disabled-label-background;
+      color: $color-font-light;
+      box-shadow: none;
+    }
+  }
+
+  &__label {
+    @include set-font-weight("semi-bold");
+
+    position: relative;
+    padding: magic-unit-rem(1.5625, true) $mu200; // 25px 32px
+    border-radius: get-border-radius("m");
+    box-shadow: 0 0 0 1px $color-option-button-label-shadow;
+    border: 2px solid transparent;
+    cursor: pointer;
+
+    @include set-focus-floating-base() {
+      border-radius: get-border-radius("l");
+      top: -$mu025;
+      right: -$mu025;
+      bottom: -$mu025;
+      left: -$mu025;
+    }
+  }
+
+  &--full {
+    #{$parent} {
+      &__label {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,131 @@
+@use "sass:math";
+
+// @use settings
+@use "settings-tools" as *;
+
+.mc-option-card {
+  $parent: get-parent-selector(&);
+
+  &,
+  * {
+    box-sizing: border-box;
+  }
+
+  border-radius: get-border-radius("m");
+  position: relative;
+
+  &__input {
+    @include unify-parent("input") {
+      position: absolute;
+      right: $mu100;
+      top: $mu100;
+      z-index: 10;
+
+      &:focus {
+        box-shadow: none;
+      }
+
+      &:not(:disabled) {
+        &:hover + #{$parent}__label {
+          box-shadow: 0 0 0 2px $color-option-card-hover-label-shadow;
+        }
+
+        &:checked + #{$parent}__label {
+          border-color: $color-option-card-checked-label-border;
+          box-shadow: 0 0 0 $mu025 $color-option-card-checked-label-shadow;
+        }
+
+        &:focus + #{$parent}__label {
+          @include set-focus-floating();
+        }
+      }
+
+      &:checked ~ #{$parent}__content {
+        label,
+        button,
+        [href],
+        input,
+        select,
+        textarea,
+        #{$parent}__focusable,
+        [tabindex]:not([tabindex="-1"]) {
+          z-index: 2;
+        }
+      }
+
+      &:disabled {
+        & ~ * {
+          cursor: not-allowed;
+          pointer-events: none;
+        }
+
+        & ~ #{$parent}__label {
+          border-color: $color-option-card-disabled-content;
+          box-shadow: 0 0 0 1px $color-option-card-disabled-content;
+        }
+
+        & ~ #{$parent}__content {
+          background-color: $color-option-card-disabled-content;
+          border-radius: 0;
+          color: $color-option-card-disabled-label;
+        }
+      }
+    }
+  }
+
+  &__label {
+    border: 2px solid transparent;
+    border-radius: get-border-radius("m");
+    box-shadow: 0 0 0 1px $color-option-card-label-shadow;
+    cursor: pointer;
+    height: 100%;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 5;
+
+    &-text {
+      @include visually-hidden();
+    }
+
+    @include set-focus-floating-base($position: false) {
+      border-radius: get-border-radius("l");
+      top: -$mu025;
+      right: -$mu025;
+      bottom: -$mu025;
+      left: -$mu025;
+    }
+  }
+
+  &__content {
+    border-radius: 4px;
+    min-height: 100%;
+    padding: $mu100;
+  }
+
+  &--small {
+    input#{$parent}__input {
+      right: $mu050;
+      top: $mu050;
+    }
+
+    #{$parent}__content {
+      padding: $mu050;
+    }
+  }
+
+  &--centered {
+    input#{$parent}__input {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &--no-padding {
+    #{$parent}__content {
+      padding: 0;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@use "sass:map";
+@use "t.map-tools" as *;
+
+// media-querie mixin
+// mobile first
+$screens: get-token(screen);
+
+@mixin set-from-screen($size) {
+  @if map.has-key(get-token(screen), $size) {
+    @media screen and (min-width: get-token(screen, $size)) {
+      @content;
+    }
+  } @else {
+    @error "the `#{$size}` key does not exist in the screen map. Please make sure to use an authorized value";
+  }
+}
+
+$major-screens: ("s", "m", "l", "xl", "xxl");
+
+// create modifiers from viewport list
+@mixin modify-from-screens($size-list) {
+  @each $size in $size-list {
+    // 's' == 0, so no breakpoints here
+    @if $size == "s" {
+      @content;
+    } @else {
+      @include set-from-screen($size) {
+        &\@from-#{$size} {
+          @content;
+        }
+      }
+    }
+  }
+}

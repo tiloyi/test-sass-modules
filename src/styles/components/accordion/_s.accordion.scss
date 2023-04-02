@@ -1,0 +1,23 @@
+@use "s.magic-unit" as *;
+
+$accordion-sizes: (
+  "s": (
+    "background-open": "control-more-16",
+    "background-close": "control-less-16",
+    "background-size": $mu100,
+    "font-size": "05",
+    "icon-size": $mu150,
+    "padding-right": $mu250,
+    "padding-v": $mu100,
+  ),
+  "m": (
+    "background-open": "control-more-24",
+    "background-close": "control-less-24",
+    "background-size": $mu150,
+    "font-size": "06",
+    "icon-size": $mu200,
+    "padding-right": $mu300,
+    "padding-v": $mu125,
+  ),
+);
+$accordion-size-default: map.get($accordion-sizes, "m");

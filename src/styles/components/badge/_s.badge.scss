@@ -1,0 +1,5 @@
+@use "s.border" as *;
+@use "t.map-tools" as *;
+
+$badges: get-token(color, badge);
+$badge-border: get-border("s");

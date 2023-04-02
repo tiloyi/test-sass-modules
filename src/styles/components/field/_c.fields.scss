@@ -1,0 +1,96 @@
+// @use settings
+@use "settings-tools" as *;
+
+// @use component files
+@use "t.field" as *;
+
+.mc-field {
+  $parent: get-parent-selector(&);
+
+  &__label,
+  &__legend {
+    color: $color-fields-label;
+  }
+
+  &__label {
+    @include set-font-scale("04", "s");
+  }
+
+  &__legend {
+    @include set-font-scale("04", "m");
+
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &__requirement,
+  &__help {
+    @include set-font-scale("02", "s");
+
+    color: $color-fields-requirement;
+  }
+
+  &__requirement {
+    &::before {
+      content: "\0000A0-\0000A0";
+    }
+  }
+
+  &__help {
+    display: block;
+    margin-top: $mu025;
+  }
+
+  #{$parent}__input,
+  #{$parent}__element {
+    margin-top: $mu050;
+  }
+
+  &__container {
+    margin-top: $mu100;
+
+    &--inline {
+      @include set-from-screen("m-medium") {
+        display: flex;
+      }
+
+      #{$parent}__item {
+        &:not(:last-child) {
+          @include set-from-screen("m-medium") {
+            margin-bottom: 0;
+            margin-right: $mu100;
+          }
+
+          @include set-from-screen("l") {
+            margin-right: $mu200;
+          }
+        }
+      }
+    }
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: $mu100;
+    }
+  }
+
+  &__error-message {
+    @include set-font-scale("04", "m");
+
+    color: $color-fields-error;
+    display: inline-block;
+    margin-top: $mu025;
+  }
+
+  &--group {
+    border: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+
+    #{$parent}__error-message {
+      margin-top: $mu050;
+    }
+  }
+}

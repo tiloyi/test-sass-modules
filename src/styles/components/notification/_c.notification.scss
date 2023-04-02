@@ -1,0 +1,132 @@
+// @use settings
+@use "settings-tools" as *;
+
+// @use component files
+@use "s.notification" as *;
+@use "t.notification" as *;
+
+/* mqp:start */
+.mc-notification {
+  $parent: get-parent-selector(&);
+
+  @include set-border-radius();
+  @include set-flexy();
+  @include set-notification-size($notification-default-size);
+  @include set-notification-type("information");
+
+  box-sizing: border-box;
+  color: $color-font-darkest;
+
+  &::before {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    content: "";
+    display: block;
+  }
+
+  &__content {
+    flex: 1 1 0;
+  }
+
+  &__title,
+  &__message {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  &__title {
+    @include set-font-weight("semi-bold");
+    @include set-font-scale("05");
+  }
+
+  &__message {
+    @include set-font-scale("04");
+  }
+
+  &__footer {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-top: $mu100;
+
+    @include set-from-screen("l") {
+      flex-direction: row;
+    }
+  }
+
+  // TODO: to be removed later
+  &__link {
+    @include set-font-scale("04", "m");
+
+    margin-top: $mu050;
+  }
+
+  .mc-button {
+    &:not(:first-child) {
+      margin-top: $mu100;
+
+      @include set-from-screen("l") {
+        margin: {
+          top: 0;
+          left: $mu100;
+        }
+      }
+    }
+  }
+
+  // Notification type
+  @each $type, $props in $notification-types {
+    &--#{$type} {
+      @include set-notification-type($type);
+    }
+  }
+
+  // Notification size
+  @each $size, $props in $notification-sizes {
+    &--#{$size} {
+      @if $size != "m" {
+        @include set-notification-size($props);
+
+        @each $type, $props in $notification-types {
+          @if $type != "information" {
+            &#{$parent}--#{$type} {
+              @include set-notification-type($type, $size);
+            }
+          } @else {
+            @include set-notification-type("information", $size);
+          }
+        }
+      }
+    }
+  }
+
+  // Closable
+  &-closable {
+    position: relative;
+
+    &__close {
+      @include set-focus-floating-base();
+
+      background-color: transparent;
+      background-image: url("#{inline-icons('cross-16', $notification-close-icon-color)}");
+      background-repeat: no-repeat;
+      border: 0;
+      cursor: pointer;
+      display: block;
+      height: $mu100;
+      padding: 0;
+      position: absolute;
+      outline: 0;
+      right: $mu100;
+      top: $mu100;
+      width: $mu100;
+
+      &:focus {
+        @include set-focus-floating() {
+          box-shadow: 0 0 0 $size-focus-border-thin $color-focus-border;
+        }
+      }
+    }
+  }
+}
+/* mqp:end */

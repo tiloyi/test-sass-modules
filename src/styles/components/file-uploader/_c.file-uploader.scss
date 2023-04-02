@@ -1,0 +1,160 @@
+@use "sass:map";
+
+// @use settings
+@use "settings-tools" as *;
+
+// @use component files
+@use "../button/t.button" as *;
+
+/* mqp:start */
+.mc-fileuploader {
+  position: relative;
+  display: block;
+
+  &__input {
+    @include set-hidden-input();
+  }
+
+  &__label {
+    @include set-font-weight("semi-bold");
+    @include set-button-layout();
+    @include set-button-size(map.get($button-sizes, "m"));
+    @include set-button-theme(get-token(color, button, "bordered"));
+
+    margin: 0;
+    box-shadow: none;
+    text-decoration: none;
+    outline: none;
+    box-sizing: border-box;
+
+    &::before {
+      content: "";
+      width: $mu150;
+      height: $mu150;
+      display: flex;
+      align-items: center;
+      background-color: transparent;
+      background-image: url("#{inline-icons('upload-24', $color-button-bordered-border)}");
+      background-repeat: no-repeat;
+      background-size: $mu150;
+      margin-right: $mu050;
+      margin-left: -$mu050;
+    }
+
+    :focus + & {
+      @include set-shadow-focus();
+    }
+
+    :hover + & {
+      @include set-button-theme(get-token(color, button, "bordered", "hover"));
+    }
+
+    :disabled + & {
+      @include set-button-theme(
+        get-token(color, button, "bordered", "disabled")
+      );
+
+      border-color: transparent;
+      cursor: not-allowed;
+
+      &::before {
+        background-color: transparent;
+        background-image: url("#{inline-icons('upload-24', $color-button-bordered-disabled-font)}");
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  &__files {
+    list-style: none;
+    padding: 0;
+    margin: $mu100 0 0 0;
+  }
+
+  &__file {
+    align-items: center;
+    background: $color-fileuploader-files-list;
+    color: $color-fileuploader-font;
+    display: flex;
+    flex-flow: row wrap;
+
+    &:not(:last-child) {
+      margin-bottom: $mu025;
+    }
+
+    &-name {
+      @include set-font-scale("05", "m");
+
+      flex-grow: 1;
+      overflow: hidden;
+      padding-left: $mu075;
+      padding-right: $mu075;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: calc(100% - #{$mu500 + $mu250});
+    }
+
+    &-icon {
+      background-color: transparent;
+      background-position: center right;
+      background-repeat: no-repeat;
+      background-size: $mu150;
+      display: block;
+      height: $mu150;
+      margin-left: $mu100;
+      margin-right: $mu100;
+      width: $mu150;
+    }
+
+    &--is-valid &-icon {
+      background-image: url("#{inline-icons('valid-24', $color-fileuploader-valid)}");
+    }
+
+    &--is-invalid &-icon {
+      background-image: url("#{inline-icons('alert-24', $color-fileuploader-alert)}");
+    }
+
+    &--is-invalid &-message {
+      @include set-font-scale("04", "m");
+
+      background: $color-grey-000;
+      color: $color-font-danger;
+      flex-basis: 100%;
+      padding-top: $mu025;
+    }
+  }
+
+  &__delete {
+    @include set-focus-floating-base($before: true) {
+      top: -$size-focus-gap;
+      right: -$size-focus-gap;
+      bottom: -$size-focus-gap;
+      left: -$size-focus-gap;
+    }
+
+    appearance: none;
+    background-color: $color-fileuploader-files-delete;
+    border: none;
+    cursor: pointer;
+    padding: $mu050;
+
+    &::after {
+      content: "";
+      width: $mu150;
+      height: $mu150;
+      background-color: transparent;
+      background-image: url("#{inline-icons('delete-24', $color-fileuploader-font)}");
+      background-repeat: no-repeat;
+      display: block;
+    }
+
+    &:focus {
+      outline: none;
+
+      @include set-focus-floating($before: true) {
+        box-shadow: 0 0 0 $size-focus-border-thin $color-focus-border;
+      }
+    }
+  }
+}
+/* mqp:end */

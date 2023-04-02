@@ -1,0 +1,5 @@
+@use "s.border" as *;
+@use "t.map-tools" as *;
+
+$flags: get-token(color, flag);
+$flag-border: get-border("s");

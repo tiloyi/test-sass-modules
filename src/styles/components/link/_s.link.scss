@@ -1,0 +1,16 @@
+@use "sass:map";
+@use "t.map-tools" as *;
+
+$links-tokens: get-token(color, link);
+$link-sizes: (
+  "s": (
+    "font-size": "04",
+    "line-height": "m",
+  ),
+  "m": (
+    "font-size": "05",
+    "line-height": "m",
+  ),
+);
+$link-s: map.get($link-sizes, "s");
+$link-m: map.get($link-sizes, "m");
