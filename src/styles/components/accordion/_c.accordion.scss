@@ -2,6 +2,7 @@
 
 // @use settings
 @use "../../settings-tools" as *;
+@use "@mozaic-ds/tokens" as *;
 
 // @use component files
 @use "s.accordion" as *;
@@ -13,7 +14,7 @@
   background-color: $color-grey-000;
   border-bottom: get-border(s) solid $color-font-light;
 
-  @include set-accordion-size($accordion-default-size, $parent);
+  @include set-accordion-size($accordion-size-default, $parent);
 
   // TODO:
   // this code with "label" is a backup code in order not to cause a breaking change

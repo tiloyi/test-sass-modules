@@ -1,6 +1,8 @@
 @use "sass:map";
 @use "sass:math";
 
+@use "@mozaic-ds/tokens" as *;
+
 // settings
 @use "../../settings-tools/" as *;
 
@@ -9,7 +11,7 @@
   $background-close: map.get($size, "background-close");
   $background-size: map.get($size, "background-size");
   $font-size: map.get($size, "font-size");
-  $icon-size: map-get($sizeProps, "icon-size");
+  $icon-size: map-get($size, "icon-size");
   $padding-right: map.get($size, "padding-right");
   $padding-v: map.get($size, "padding-v");
 

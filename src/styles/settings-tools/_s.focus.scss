@@ -2,6 +2,8 @@
 @use "s.magic-unit" as *;
 @use "s.radius" as *;
 
+@use "@mozaic-ds/tokens" as *;
+
 $size-focus-gap: math.div($mu025, 2);
 $size-focus-border: $mu025;
 $size-focus-border-thin: $size-focus-gap;

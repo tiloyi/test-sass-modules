@@ -1,12 +1,14 @@
-/* Error: There is no module with the namespace "map".
+/* Error: ("information": ("background": #daeff7, "border": #0b96cc, "icon": #007bb4, "icon-m": "notification-information-32", "icon-s": "notification-information-24"), "success": ("background": #ebf5de, "border": #46a610, "icon": #188803, "icon-m": "notification-success-32", "icon-s": "notification-success-24"), "warning": ("background": #fdf1e8, "border": #ea7315, "icon": #c65200, "icon-m": "notification-warning-32", "icon-s": "notification-warning-24"), "danger": ("background": #fdeaea, "border": #ea302d, "icon": #c61112, "icon-m": "notification-danger-32", "icon-s": "notification-danger-24")) isn't a valid CSS value.
  *    ,
- * 23 | $accordion-size-default: map.get($accordion-sizes, "m");
- *    |                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ * 36 |   $background: map-deep-get($notification-types, $type, "background");
+ *    |                             ^^^^^^^^^^^^^^^^^^^ value
+ *    |                ====================================================== unknown function treated as plain CSS
  *    '
- *   src/styles/components/accordion/_s.accordion.scss 23:26  @forward
- *   src/styles/components/accordion/_index.scss 1:1          @forward
- *   src/styles/components/_index.scss 1:1                    @use
- *   src/styles.scss 10:1                                     root stylesheet */
+ *   src/styles/components/notification/_t.notification.scss 36:29  set-notification-type()
+ *   src/styles/components/notification/_c.notification.scss 15:3   @forward
+ *   src/styles/components/notification/_index.scss 3:1             @forward
+ *   src/styles/components/_index.scss 20:1                         @use
+ *   src/styles.scss 10:1                                           root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -16,5 +18,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: 'Error: There is no module with the namespace "map".\a    \2577 \a 23 \2502  $accordion-size-default: map.get($accordion-sizes, "m");\a    \2502                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   src/styles/components/accordion/_s.accordion.scss 23:26  @forward\a   src/styles/components/accordion/_index.scss 1:1          @forward\a   src/styles/components/_index.scss 1:1                    @use\a   src/styles.scss 10:1                                     root stylesheet';
+  content: "Error: (\"information\": (\"background\": #daeff7, \"border\": #0b96cc, \"icon\": #007bb4, \"icon-m\": \"notification-information-32\", \"icon-s\": \"notification-information-24\"), \"success\": (\"background\": #ebf5de, \"border\": #46a610, \"icon\": #188803, \"icon-m\": \"notification-success-32\", \"icon-s\": \"notification-success-24\"), \"warning\": (\"background\": #fdf1e8, \"border\": #ea7315, \"icon\": #c65200, \"icon-m\": \"notification-warning-32\", \"icon-s\": \"notification-warning-24\"), \"danger\": (\"background\": #fdeaea, \"border\": #ea302d, \"icon\": #c61112, \"icon-m\": \"notification-danger-32\", \"icon-s\": \"notification-danger-24\")) isn't a valid CSS value.\a    \2577 \a 36 \2502    $background: map-deep-get($notification-types, $type, \"background\");\a    \2502                              ^^^^^^^^^^^^^^^^^^^ value\a    \2502                 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501  unknown function treated as plain CSS\a    \2575 \a   src/styles/components/notification/_t.notification.scss 36:29  set-notification-type()\a   src/styles/components/notification/_c.notification.scss 15:3   @forward\a   src/styles/components/notification/_index.scss 3:1             @forward\a   src/styles/components/_index.scss 20:1                         @use\a   src/styles.scss 10:1                                           root stylesheet";
 }

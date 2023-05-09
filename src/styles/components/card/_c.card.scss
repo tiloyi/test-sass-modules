@@ -3,6 +3,11 @@
 // @use settings
 @use "../../settings-tools" as *;
 
+@use "@mozaic-ds/tokens" as *;
+
+// @use component - settings
+@use "s.card" as *;
+
 .mc-card {
   $parent: get-parent-selector(&);
 

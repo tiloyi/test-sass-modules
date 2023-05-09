@@ -3,7 +3,10 @@
 // @use settings
 @use "../../settings-tools" as *;
 
+@use "@mozaic-ds/tokens" as *;
+
 // @use component files
+@use "../button/_s.button.scss" as *;
 @use "../button/t.button" as *;
 
 /* mqp:start */
