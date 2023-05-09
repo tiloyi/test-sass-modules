@@ -1,6 +1,8 @@
 // @use settings
 @use "../../settings-tools" as *;
 
+@use "@mozaic-ds/tokens" as *;
+
 // @use component files
 @use "s.listbox" as *;
 @use "t.listbox" as *;

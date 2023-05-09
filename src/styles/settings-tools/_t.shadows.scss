@@ -3,6 +3,8 @@
 @use "t.colors" as *;
 @use "t.map-tools" as *;
 
+@use "@mozaic-ds/tokens" as *;
+
 @mixin set-box-shadow($size) {
   @if meta.variable-exists($name: $size) {
     @warn "Shadow size #{$size} doesn't exist";

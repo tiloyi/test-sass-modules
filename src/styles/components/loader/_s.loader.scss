@@ -1,4 +1,6 @@
 @use "sass:map";
+
+@use "@mozaic-ds/tokens" as *;
 @use "../../settings-tools/s.magic-unit" as *;
 
 $loader-sizes: (

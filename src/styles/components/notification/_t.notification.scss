@@ -1,5 +1,6 @@
 @use "sass:map";
-@use "../../settings-tools/s.border" as *;
+@use "@mozaic-ds/tokens" as *;
+@use "../../settings-tools" as *;
 
 // @use component - settings
 @use "s.notification" as *;

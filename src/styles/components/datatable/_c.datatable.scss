@@ -3,6 +3,8 @@
 // @use settings
 @use "../../settings-tools" as *;
 
+@use "@mozaic-ds/tokens" as *;
+
 // @use component files
 @use "s.datatable" as *;
 @use "t.datatable" as *;

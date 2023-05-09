@@ -3,6 +3,7 @@
 @use "../../settings-tools/s.magic-unit" as *;
 @use "../../settings-tools/s.radius" as *;
 @use "../../settings-tools/t.inline-icons" as *;
+@use "@mozaic-ds/tokens" as *;
 
 $select-border-width: get-border("s");
 $select-sizes: (

@@ -3,6 +3,9 @@
 @use "../../settings-tools/s.magic-unit" as *;
 @use "../../settings-tools/t.map-tools" as *;
 
+// @use component - settings
+@use "s.flag" as *;
+
 @mixin set-flag-base($parent) {
   display: inline-block;
   font-size: get-token(size, font, "04");

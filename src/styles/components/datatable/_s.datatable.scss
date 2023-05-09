@@ -2,6 +2,8 @@
 @use "sass:math";
 @use "../../settings-tools/s.magic-unit" as *;
 
+@use "@mozaic-ds/tokens" as *;
+
 $presetAdeo: false;
 @if $preset == "adeo" {
   $presetAdeo: true;
