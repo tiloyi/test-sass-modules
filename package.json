@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@mozaic-ds/styles": "^1.56.0",
-    "sass": "^1.62.1"
+    "@mozaic-ds/styles": "^1.68.0",
+    "sass": "^1.69.5"
   }
 }

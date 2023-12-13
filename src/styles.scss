@@ -7,7 +7,11 @@
 // components
 // @import "./components/button/";
 
-@use "./styles/components/" as *;
+// @use "./styles/components/" as *;
+
+// @import "./styles/components/button/c.button";
+
+@use "./styles/components/button";
 
 // button {
 //   background-color: $color-secondary-blue-600;
