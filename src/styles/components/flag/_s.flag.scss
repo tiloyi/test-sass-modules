@@ -1,0 +1,5 @@
+@use "../../settings-tools/s.border" as *;
+@use "../../settings-tools/t.map-tools" as *;
+
+$flags: get-token(color, flag);
+$flag-border: get-border("s");

@@ -1,0 +1,305 @@
+@use "sass:math";
+
+// @use settings
+@use "@mozaic-ds/tokens" as *;
+@use "../../settings-tools" as *;
+
+// @use component files
+@use "s.tag" as *;
+@use "t.tag" as *;
+
+/* mqp:start */
+.mc-tag {
+  &-text {
+    @include set-tag-base-style("m");
+
+    background: $color-tag-text-light-background;
+    color: $color-tag-text-light-text;
+    box-shadow: inset 0 0 0 get-border("s") $color-tag-text-light-border;
+
+    &--s {
+      @include modify-from-screens($major-screens) {
+        @include set-tag-base-style("s");
+      }
+    }
+
+    &--dark {
+      background: $color-tag-text-dark-background;
+      color: $color-tag-text-dark-text;
+      box-shadow: inset 0 0 0 get-border("s") $color-tag-text-dark-border;
+    }
+  }
+
+  &-link {
+    @include set-tag-base-style("m");
+
+    text-decoration: none;
+    outline: none;
+    background: $color-tag-link-light-background;
+    box-shadow: inset 0 0 0 get-border("s") $color-tag-link-light-border;
+    color: $color-tag-link-light-text;
+
+    &:hover {
+      background: $color-tag-link-light-hover-background;
+    }
+
+    &:active {
+      background: $color-tag-link-light-active-background;
+    }
+
+    &:focus {
+      @include set-focus-floating() {
+        box-shadow: 0 0 0 $size-focus-border-thin $color-focus-border;
+      }
+    }
+
+    &--s {
+      @include modify-from-screens($major-screens) {
+        @include set-tag-base-style("s");
+      }
+    }
+
+    &--dark {
+      background: $color-tag-link-dark-background;
+      color: $color-tag-link-dark-text;
+      box-shadow: inset 0 0 0 get-border("s") $color-tag-link-dark-border;
+
+      &:hover {
+        background: $color-tag-link-dark-hover-background;
+      }
+
+      &:active {
+        background: $color-tag-link-dark-active-background;
+      }
+    }
+  }
+
+  &-selectable {
+    display: inline-block;
+    white-space: nowrap;
+
+    &__input {
+      @include set-hidden-input();
+    }
+
+    &__label {
+      user-select: none;
+    }
+
+    /* stylelint-disable no-descending-specificity */
+    &__pill {
+      @include set-tag-base-style("m");
+      @include set-focus-transition();
+
+      background: $color-tag-selectable-light-background;
+      box-shadow: inset 0 0 0 get-border("s") $color-tag-selectable-light-border;
+      color: $color-tag-selectable-light-text;
+      cursor: pointer;
+
+      &:hover {
+        background: $color-tag-selectable-light-hover-background;
+      }
+
+      :checked + & {
+        background: $color-tag-selectable-light-selected-background;
+        box-shadow: inset 0 0 0 get-border("s")
+          $color-tag-selectable-light-selected-background;
+        color: $color-tag-selectable-light-selected-text;
+
+        &:hover {
+          background: $color-tag-selectable-light-selected-hover-background;
+          box-shadow: inset 0 0 0 get-border("s")
+            $color-tag-selectable-light-selected-hover-background;
+        }
+      }
+
+      &:active {
+        background: $color-tag-selectable-light-active-background;
+        box-shadow: inset 0 0 0 get-border("s")
+          $color-tag-selectable-light-active-border;
+        color: $color-tag-selectable-light-active-text;
+      }
+
+      :focus + & {
+        @include set-focus-floating() {
+          box-shadow: 0 0 0 $size-focus-border-thin $color-focus-border;
+        }
+      }
+
+      :disabled + & {
+        cursor: not-allowed;
+        background: $color-tag-selectable-light-disabled-background;
+        color: $color-tag-selectable-light-disabled-text;
+      }
+    }
+
+    &--dark {
+      .mc-tag-selectable__pill {
+        background: $color-tag-selectable-dark-background;
+        color: $color-tag-selectable-dark-text;
+        cursor: pointer;
+
+        &:hover {
+          background: $color-tag-selectable-dark-hover-background;
+        }
+
+        &:active {
+          background: $color-tag-selectable-dark-active-background;
+          box-shadow: inset 0 0 0 get-border("s")
+            $color-tag-selectable-dark-active-border;
+          color: $color-tag-selectable-dark-active-text;
+        }
+      }
+
+      :checked + .mc-tag-selectable__pill {
+        background: $color-tag-selectable-dark-selected-background;
+        box-shadow: inset 0 0 0 get-border("s")
+          $color-tag-selectable-dark-selected-border;
+        color: $color-tag-selectable-dark-selected-text;
+
+        &:hover {
+          background: $color-tag-selectable-dark-selected-hover-background;
+        }
+      }
+
+      :disabled + .mc-tag-selectable__pill {
+        cursor: not-allowed;
+        background: $color-tag-selectable-dark-disabled-background;
+        color: $color-tag-selectable-dark-disabled-text;
+      }
+    }
+    /* stylelint-enable no-descending-specificity */
+
+    &--s {
+      @include modify-from-screens($major-screens) {
+        .mc-tag-selectable__pill {
+          @include set-tag-base-style("s");
+        }
+      }
+    }
+
+    &--m {
+      @include modify-from-screens($major-screens) {
+        .mc-tag-selectable__pill {
+          @include set-tag-base-style("m");
+        }
+      }
+    }
+  }
+
+  &-removable {
+    @include set-tag-base-style("m");
+
+    padding: 0;
+    background-color: $color-tag-removable-light-background;
+    color: $color-tag-removable-light-text;
+
+    &--s {
+      @include modify-from-screens($major-screens) {
+        @include set-tag-base-style("s");
+
+        padding: 0;
+
+        .mc-tag-removable__label {
+          padding: $padding-y-size-s $mu025 $padding-y-size-s
+            calc(#{$mu100} - #{$tag-border});
+        }
+
+        .mc-tag-removable__remove {
+          @include set-tag-removable-icon("s");
+          @include set-tag-icon-base64("s");
+        }
+      }
+    }
+
+    &--m {
+      @include modify-from-screens($major-screens) {
+        @include set-tag-base-style("m");
+
+        padding: 0;
+
+        .mc-tag-removable__label {
+          padding: $padding-y-size-m $mu025 $padding-y-size-m
+            calc(#{$mu150} - #{$tag-border});
+        }
+
+        .mc-tag-removable__remove {
+          @include set-tag-removable-icon("m");
+          @include set-tag-icon-base64();
+        }
+      }
+    }
+
+    &--dark {
+      background-color: $color-tag-removable-dark-background;
+      color: $color-tag-removable-dark-text;
+    }
+
+    &__label {
+      padding: $padding-y-size-m $mu025 $padding-y-size-m
+        calc(#{$mu150} - #{$tag-border});
+    }
+
+    &__remove {
+      @include unstyle-button();
+      @include set-tag-removable-icon("m");
+      @include set-tag-icon-base64();
+
+      @include set-focus-floating-base() {
+        border-radius: 50%;
+        top: -(math.div($mu025, 2));
+        right: -(math.div($mu025, 2));
+        bottom: -(math.div($mu025, 2));
+        left: -(math.div($mu025, 2));
+      }
+
+      background-color: $color-tag-removable-light-background;
+      margin: 0;
+      display: block;
+      border-radius: 50%;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &-text {
+        @include set-hidden-input();
+      }
+
+      &:hover {
+        background-color: $color-tag-removable-light-hover-background;
+      }
+
+      &:focus {
+        @include set-focus-floating() {
+          box-shadow: 0 0 0 $size-focus-border-thin $color-focus-border;
+        }
+      }
+
+      &:active {
+        background-color: $color-tag-removable-light-active-background;
+      }
+
+      .mc-tag-removable--dark & {
+        @include set-tag-icon-base64("dark");
+
+        background-color: $color-tag-removable-dark-background;
+
+        &:hover {
+          background-color: $color-tag-removable-dark-hover-background;
+        }
+
+        &:active {
+          background-color: $color-tag-removable-dark-active-background;
+        }
+      }
+    }
+  }
+
+  &-list {
+    @include unstyle-list-inline();
+
+    &__item {
+      margin: 0 $mu100 $mu100 0;
+    }
+  }
+}
+/* mqp:end */

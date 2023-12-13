@@ -1,0 +1,25 @@
+@mixin unstyle-button($haspadding: true) {
+  margin: 0;
+  box-shadow: none;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+  @if $haspadding {
+    padding: 0;
+  }
+}
+
+@mixin unstyle-list() {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+@mixin unstyle-list-inline() {
+  @include unstyle-list();
+
+  display: flex;
+  flex-flow: row wrap;
+}

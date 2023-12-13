@@ -1,0 +1,32 @@
+@mixin reset-input() {
+  font-family: inherit;
+  box-sizing: border-box;
+  outline: none;
+  appearance: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  border: none;
+
+  &[type="number"] {
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      appearance: none;
+      margin: 0;
+    }
+  }
+
+  /* for mozilla */
+  /* stylelint-disable property-no-vendor-prefix, no-duplicate-selectors */
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
+  /* stylelint-enable property-no-vendor-prefix, no-duplicate-selectors */
+
+  &[type="search"] {
+    &::-webkit-search-decoration:hover,
+    &::-webkit-search-cancel-button:hover {
+      cursor: pointer;
+    }
+  }
+}

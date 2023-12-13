@@ -1,0 +1,88 @@
+// @use settings
+@use "../../settings-tools" as *;
+
+// @use component files
+@use "s.button" as *;
+@use "t.button" as *;
+
+/* mqp:start */
+.mc-button {
+  @include unstyle-button();
+  @include set-button-theme(get-token(color, button, "solid"), true);
+  @include set-font-weight("semi-bold");
+  @include set-button-size($button-medium);
+  @include set-button-layout();
+
+  align-items: stretch;
+  box-sizing: border-box;
+  fill: currentcolor;
+
+  &:focus {
+    @include set-shadow-focus();
+  }
+
+  // all sizes
+  @include mod-button-sizes();
+
+  // widths layouts
+  &--fit {
+    @include modify-from-screens($major-screens) {
+      display: inline-flex;
+      width: auto;
+    }
+  }
+
+  &--full {
+    @include modify-from-screens($major-screens) {
+      display: flex;
+      width: 100%;
+
+      @supports (width: stretch) {
+        width: stretch;
+      }
+    }
+  }
+
+  &--square {
+    @include set-from-screen("l") {
+      padding: 0;
+    }
+
+    align-items: center;
+    height: 0;
+    padding: 0;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+
+    &:last-child {
+      margin-left: $mu050;
+      margin-right: -$mu025;
+    }
+
+    &:first-child {
+      margin-right: $mu050;
+      margin-left: -$mu025;
+    }
+
+    &:only-child {
+      margin: 0;
+    }
+  }
+
+  &__label {
+    align-items: center;
+    display: flex;
+    pointer-events: none;
+  }
+
+  @each $name, $props in $buttons {
+    @if $name != "solid" {
+      &--#{$name} {
+        @include set-button-theme($props);
+      }
+    }
+  }
+}
+/* mqp:end */

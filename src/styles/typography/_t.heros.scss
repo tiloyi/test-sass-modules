@@ -1,0 +1,41 @@
+@use "s.fonts-faces" as *;
+@use "s.fonts-scale" as *;
+@use "s.screens" as *;
+
+/* mqp:start */
+.mt-hero {
+  @include set-font-scale("09");
+
+  @include set-from-screen("m") {
+    @include set-font-scale("10");
+  }
+
+  @include set-from-screen("l") {
+    @include set-font-scale("11");
+  }
+
+  @include set-from-screen("xl-medium") {
+    @include set-font-scale("12");
+  }
+
+  &--semi-bold {
+    @include set-font-weight("semi-bold");
+  }
+
+  &--line-height-s {
+    @include set-line-height("09", "s");
+
+    @include set-from-screen("m") {
+      @include set-line-height("10", "s");
+    }
+
+    @include set-from-screen("l") {
+      @include set-line-height("11", "s");
+    }
+
+    @include set-from-screen("xl-medium") {
+      @include set-line-height("12", "s");
+    }
+  }
+}
+/* mqp:end */

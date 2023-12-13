@@ -1,0 +1,79 @@
+@use "sass:map";
+
+// @use settings
+@use "@mozaic-ds/tokens" as *;
+@use "../../settings-tools" as *;
+
+// @use component files
+@use "s.progressbar" as *;
+
+.mc-progressbar {
+  $parent: get-parent-selector(&);
+
+  @include set-font-family();
+
+  align-items: center;
+  background-color: $color-progress-background;
+  display: flex;
+  height: $mu050;
+  justify-content: center;
+  position: relative;
+
+  &,
+  &__indicator {
+    border-radius: get-border-radius("m");
+    overflow: hidden;
+  }
+
+  &__indicator {
+    background-color: $color-progress-indicator;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    transition: width 0.4s ease;
+    top: 0;
+
+    @at-root #{$parent}--static & {
+      transition: none;
+    }
+  }
+
+  &__percentage {
+    @include set-font-scale("04", "m");
+    @include set-font-weight("semi-bold");
+
+    color: $color-progress-percentage-default;
+    position: relative;
+    z-index: 1;
+
+    @at-root #{$parent}--half & {
+      color: $color-progress-percentage-half;
+    }
+
+    // visually hide the percentage
+    @at-root #{$parent}:not(#{$parent}--percent) & {
+      @include set-hidden-input();
+    }
+  }
+
+  // Size modifiers
+  @each $name, $props in $progressbar-sizes {
+    &--#{$name} {
+      @if $name != "m" {
+        height: map.get($props, "height");
+
+        &,
+        #{$parent}__indicator {
+          border-radius: map.get($props, "border-radius");
+        }
+      }
+    }
+  }
+
+  // Color modifiers
+  &--branded {
+    #{$parent}__indicator {
+      background-color: $color-progress-branded-indicator;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+@use "../../settings-tools/s.border" as *;
+@use "../../settings-tools/s.magic-unit" as *;
+
+$radio-min-width: 20px;
+$radio-min-height: 20px;
+$radio-width: $mu125;
+$radio-height: $mu125;
+$radio-border-width: get-border("m");

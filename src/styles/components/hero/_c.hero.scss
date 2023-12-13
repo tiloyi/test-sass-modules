@@ -1,0 +1,288 @@
+// @use settings
+@use "../../settings-tools" as *;
+
+@use "@mozaic-ds/tokens" as *;
+
+// @use component files
+@use "t.hero" as *;
+
+.mc-hero {
+  $parent: get-parent-selector(&);
+
+  position: relative;
+
+  &__main {
+    flex: 100%;
+    padding-bottom: magic-unit-rem(4.5, "true");
+    padding-top: $mu400;
+
+    @include set-from-screen("m") {
+      padding-bottom: $mu700;
+      padding-top: $mu600;
+    }
+
+    @include set-from-screen("l") {
+      padding-bottom: $mu1000;
+    }
+
+    @include set-from-screen("xl-medium") {
+      padding-bottom: $mu800;
+      padding-top: $mu800;
+    }
+  }
+
+  &__cover {
+    z-index: -1;
+
+    &,
+    &::before {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    &::before {
+      background-color: mt-rgba($color-hero-cover-background, 0.8);
+      content: "";
+      display: block;
+    }
+  }
+
+  &__visual {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &__header {
+    @include set-from-screen("l") {
+      @include set-element-width(9, 12);
+    }
+
+    @include set-from-screen("xl") {
+      @include set-element-width(8, 12);
+    }
+
+    @media (min-width: $screen-xl-medium) and (max-width: ($screen-xxl - 1)) {
+      @include set-element-width(9, 12);
+    }
+  }
+
+  &__title {
+    margin-top: 0;
+  }
+
+  &__content {
+    color: $color-font-lightest;
+
+    @include set-from-screen("l") {
+      @include set-element-width(10, 12);
+    }
+
+    @media (min-width: $screen-xl) and (max-width: ($screen-xxl - 1)) {
+      @include set-element-width(9, 12);
+    }
+  }
+
+  &__boxed {
+    flex: 100%;
+    margin-top: -$mu600;
+
+    @include set-from-screen("m") {
+      margin-top: -$mu500;
+    }
+
+    @include set-from-screen("l") {
+      @include set-flexy-width(5, 12);
+
+      margin-top: 0;
+    }
+
+    @include set-from-screen("xxl") {
+      @include set-flexy-width(4, 12);
+    }
+  }
+
+  // With Content
+  &--with-content {
+    #{$parent} {
+      &__main {
+        padding-bottom: $mu300;
+        padding-top: $mu250;
+
+        @include set-from-screen("m") {
+          padding-bottom: $mu500;
+          padding-top: $mu350;
+        }
+
+        @include set-from-screen("l") {
+          padding-bottom: $mu600;
+          padding-top: $mu500;
+        }
+
+        @include set-from-screen("xxl") {
+          padding-bottom: $mu800;
+        }
+      }
+
+      &__header {
+        @media (min-width: $screen-xl-medium) and (max-width: ($screen-xxl - 1)) {
+          @include set-element-width(8, 12);
+        }
+
+        @include set-from-screen("xxl") {
+          @include set-element-width(7, 12);
+        }
+      }
+    }
+  }
+
+  // With boxed content
+  &--with-boxed {
+    * {
+      box-sizing: border-box;
+    }
+
+    @include set-from-screen("l") {
+      padding-bottom: $mu300;
+      padding-top: $mu400;
+    }
+
+    @include set-from-screen("xl-medium") {
+      padding-bottom: $mu400;
+    }
+
+    @include set-from-screen("xxl") {
+      padding-bottom: $mu500;
+    }
+
+    #{$parent} {
+      &__main {
+        padding-bottom: $mu600;
+        padding-top: $mu250;
+        position: relative;
+        flex: 100%;
+
+        @include set-from-screen("m") {
+          padding-bottom: $mu500;
+          padding-top: $mu400;
+        }
+
+        @include set-from-screen("l") {
+          @include set-flexy-width(7, 12);
+
+          padding-bottom: 0;
+          padding-top: 0;
+          position: static;
+        }
+
+        @include set-from-screen("xxl") {
+          @include set-flexy-width(8, 12);
+        }
+      }
+
+      &__cover {
+        @media (max-width: ($screen-m - 1)) {
+          left: -$mu050;
+          width: calc(100% + #{$mu100});
+        }
+
+        @media (max-width: ($screen-l - 1)) {
+          left: -$mu100;
+          width: calc(100% + #{$mu200});
+        }
+      }
+
+      &__header,
+      &__content {
+        max-width: none;
+      }
+
+      &__content {
+        margin-bottom: $mu200;
+
+        @include set-from-screen("m") {
+          margin-bottom: $mu300;
+        }
+
+        @include set-from-screen("l") {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &--boxed-l {
+    @media (min-width: $screen-l) and (max-width: ($screen-xl - 1)) {
+      padding-bottom: 0;
+      padding-top: 0;
+
+      #{$parent} {
+        &__main,
+        &__boxed {
+          flex: 100%;
+          max-width: none;
+        }
+
+        &__cover {
+          left: -$mu200;
+          width: calc(100% + #{$mu400});
+        }
+
+        &__main {
+          padding-bottom: $mu700;
+          padding-top: $mu400;
+          position: relative;
+        }
+
+        &__content {
+          margin-bottom: $mu300;
+        }
+
+        &__boxed {
+          margin-top: -$mu700;
+        }
+      }
+    }
+  }
+
+  // Center
+  &--center {
+    #{$parent} {
+      &__header,
+      &__content {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      &__header {
+        @include set-from-screen("l") {
+          @include set-element-width(8, 12);
+        }
+
+        @include set-from-screen("xxl") {
+          @include set-element-width(6, 12);
+        }
+      }
+
+      &__content {
+        text-align: center;
+
+        @include set-from-screen("l") {
+          max-width: none;
+        }
+
+        @include set-from-screen("xl") {
+          @include set-element-width(8, 12);
+        }
+
+        @media (min-width: $screen-xl-medium) and (max-width: ($screen-xxl - 1)) {
+          @include set-element-width(10, 12);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@use "../../settings-tools/s.border" as *;
+@use "../../settings-tools/s.magic-unit" as *;
+@use "../../settings-tools/t.map-tools" as *;
+
+$dividers: get-token(color, divider);
+$divider-positions: "top", "right", "bottom", "left";
+$color-divider-default: get-token(color, divider, "default");
+$divider-border-size-s: get-border("s");
+$divider-sizes: (
+  "s": get-border("s"),
+  "m": $mu025,
+  "l": $mu050,
+);

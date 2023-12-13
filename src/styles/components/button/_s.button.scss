@@ -1,0 +1,47 @@
+@use "sass:map";
+@use "sass:math";
+@use "../../settings-tools/s.border" as *;
+@use "../../settings-tools/s.magic-unit" as *;
+@use "../../settings-tools/s.radius" as *;
+@use "../../settings-tools/t.map-tools" as *;
+
+$buttons: get-token(color, button);
+$button-sizes: (
+  "s": (
+    "font-size": "04",
+    "line-height": "m",
+    "padding-v": magic-unit-rem(0.3125, "true"),
+    "padding-h": $mu100,
+    "min-height": $mu200,
+    "icon-size": $mu150,
+    "icon-margin-top": -1 * math.div($mu075, 4),
+    "icon-margin-bottom": -1 * math.div($mu075, 4),
+    "only-icon-size": $mu150,
+  ),
+  "m": (
+    "font-size": "05",
+    "line-height": "m",
+    "padding-v": magic-unit-rem(0.6875, "true"),
+    "padding-h": $mu150,
+    "min-height": $mu300,
+    "icon-size": $mu150,
+    "icon-margin-top": -1 * math.div($mu025, $mu025) * 1px,
+    "icon-margin-bottom": -1 * math.div($mu025, $mu025) * 1px,
+    "only-icon-size": $mu200,
+  ),
+  "l": (
+    "font-size": "06",
+    "line-height": "m",
+    "padding-v": magic-unit-rem(0.875, "true"),
+    "padding-h": $mu150,
+    "min-height": $mu350,
+    "icon-size": $mu200,
+    "icon-margin-top": -1 * $mu025,
+    "icon-margin-bottom": -1 * $mu025,
+    "only-icon-size": $mu200,
+  ),
+);
+$button-medium: map.get($button-sizes, "m");
+$button-radius: get-border-radius("m");
+$button-border: get-border("m");
+$button-color-default: map.get(get-token(color, button, "solid"), "font");

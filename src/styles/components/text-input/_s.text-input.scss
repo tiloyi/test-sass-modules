@@ -1,0 +1,35 @@
+@use "sass:map";
+@use "sass:math";
+@use "../../settings-tools/s.magic-unit" as *;
+
+$input-border-width: 0.0625rem; // get-border('s');
+$input-sizes: (
+  "s": (
+    "font-size": "04",
+    "line-height": "m",
+    "padding-v": math.div($mu075, 2),
+    "padding-h": $mu050 - $input-border-width,
+  ),
+  "m": (
+    "font-size": "05",
+    "line-height": "m",
+    "padding-v": $mu075,
+    "padding-h": $mu075 - $input-border-width,
+  ),
+);
+$input-icon-sizes: (
+  "s": (
+    "left": $mu050,
+    "height": $mu150,
+    "width": $mu150,
+    "padding-left": $mu250 - $input-border-width,
+  ),
+  "m": (
+    "left": $mu075,
+    "height": $mu150,
+    "width": $mu150,
+    "padding-left": $mu300 - $input-border-width,
+  ),
+);
+$input-default-size: map.get($input-sizes, "m");
+$input-icon-default-size: map.get($input-icon-sizes, "m");

@@ -1,0 +1,23 @@
+@use "../../settings-tools/s.border" as *;
+@use "../../settings-tools/s.magic-unit" as *;
+@use "../../settings-tools/t.map-tools" as *;
+
+$tag-themes: get-token(color, tag);
+$tag-border: get-border("s");
+$tag-border-focus: get-border("m");
+$padding-y-size-s: calc(#{$mu025} - #{$tag-border});
+$padding-y-size-m: calc(#{$mu075} - #{$tag-border});
+$tag-sizes: (
+  "s": (
+    "padding": $padding-y-size-s calc(#{$mu100} - #{$tag-border}),
+    "font-size": "04",
+    "line-height": "m",
+    "border-radius": $mu075,
+  ),
+  "m": (
+    "padding": $padding-y-size-m calc(#{$mu150} - #{$tag-border}),
+    "font-size": "04",
+    "line-height": "m",
+    "border-radius": $mu125,
+  ),
+);
